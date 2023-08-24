@@ -1,0 +1,32 @@
+.Box_Selection{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  @media (max-width: 700px) {
+    width: 100% !important;
+    font-size: 1.5rem !important;
+  }
+}
+
+.Box_Selection:hover{
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.MainPage_WrapItem{
+  @media (max-width: 700px) {
+    width: 100% !important;
+    font-size: 1.5rem !important;
+  }
+}
+
+.MainPage_Text{
+  font-size: 1.5rem !important;
+  @media (max-width: 700px) {
+    font-size: 1.8rem !important;
+  }
+}
+
+

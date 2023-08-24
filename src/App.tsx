@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Layout from './pages/Layout/Layout'; // Import your page components
+import LoadingScreen from './components/LoadingScreen/loadingScreen';
+import { Button, ChakraProvider, extendBaseTheme } from '@chakra-ui/react';
 
-function App() {
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout />,
+  },
+]);
+
+const theme = extendBaseTheme({
+  components: {
+    Button,
+  },
+})
+
+const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+
+  useEffect(() => {
+    // Simulating loading process for 3 seconds
+    const loadingTimeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(loadingTimeout);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ChakraProvider>
+      {isLoading ? (<LoadingScreen isLoading={isLoading} />) : (<RouterProvider router={router} />)}
+    </ChakraProvider>
   );
-}
+};
 
 export default App;
