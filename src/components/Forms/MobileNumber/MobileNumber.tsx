@@ -1,9 +1,11 @@
 import React from 'react';
 import './MobileNumber.css';
-import { Box, Container, Flex, Text, Image, Wrap, WrapItem, ScaleFade } from '@chakra-ui/react'
+import { Box, Container, Flex, Text, Image, Wrap, WrapItem, ScaleFade, IconButton, Input, InputGroup, InputLeftElement, Stack, InputLeftAddon } from '@chakra-ui/react'
 import ticket from '../../../utils/images/icons8-ticket.png'
 import calendar from '../../../utils/images/icons8-calendar.png'
-
+import { CloseIcon, CheckIcon, ArrowBackIcon, PhoneIcon } from '@chakra-ui/icons'
+import { Button, ButtonGroup } from '@chakra-ui/react'
+import ButtonSection from '../ButtonSection/ButtonSection';
 
 interface LoadingScreenProps {
   selectedOption: () => void;
@@ -11,34 +13,17 @@ interface LoadingScreenProps {
 
 const MobileNumber = (props: LoadingScreenProps) => {
   return (
-    <ScaleFade initialScale={0.9} in={true} style={{ width: '100%' }}>
-      <Wrap justify='center' spacing='30px' width={'100%'}>
-        <WrapItem className='MainPage_WrapItem'>
-          <Box borderRadius={'xl'} className="Box_Selection" bg='#3f87bb' w='300px' h='250px' p={4} pl={0} pr={0} color='white' onClick={() => props.selectedOption()}>
-            <Container display='flex' justifyContent='center'>
-              <Image className="Box_Selection_Image" src={ticket} alt='Dan Abramov' />
-            </Container>
-            <Container h='120px' display='flex' justifyContent='center' alignItems={'center'}>
-              <Text className='MainPage_Text' fontWeight='500' color='whiteAlpha'>Accept</Text>
-            </Container>
+    <Container mt='10' mb='5' className="Header_Container" maxW='600px' centerContent>
+      <ScaleFade initialScale={0.9} in={true} style={{ width: '100%' }}>
+        <InputGroup mb={5}>
+          <InputLeftAddon children='+65' />
+          <Input type='tel' placeholder='phone number' />
+        </InputGroup>
+        <ButtonSection selectedOption={() => props.selectedOption()} />
 
-          </Box>
-        </WrapItem>
+      </ScaleFade>
+    </Container>
 
-
-        <WrapItem className='MainPage_WrapItem'>
-          <Box borderRadius={'xl'} className="Box_Selection" bg='#f7c635' w='300px' h='250px' p={4} pl={0} pr={0} color='white' onClick={() => props.selectedOption()}>
-            <Container display='flex' justifyContent='center'>
-              <Image className="Box_Selection_Image" src={calendar} alt='Dan Abramov' />
-            </Container>
-            <Container h='120px' display='flex' justifyContent='center' alignItems={'center'}>
-              <Text className='MainPage_Text' fontWeight='500' color='whiteAlpha'>Skip</Text>
-            </Container>
-          </Box>
-        </WrapItem>
-
-      </Wrap>
-    </ScaleFade>
   );
 };
 

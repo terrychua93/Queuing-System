@@ -12,9 +12,9 @@ interface LoadingScreenProps {
 const MainPage = (props: LoadingScreenProps) => {
   return (
     <ScaleFade initialScale={0.9} in={true} style={{ width: '100%' }}>
-      <Wrap justify='center' spacing='30px' width={'100%'}>
+      <Wrap justify='center' spacing='5px' width={'100%'}>
         <WrapItem className='MainPage_WrapItem'>
-          <Box borderRadius={'xl'} className="Box_Selection" bg='#3f87bb' w='300px' h='250px' p={4} pl={0} pr={0} color='white' onClick={() => props.selectedOption()}>
+          <Box borderRadius={'xl'} className="MainPage_BoxSelection" bg='#3f87bb' w='300px' h='250px' p={4} pl={0} pr={0} color='white' onClick={() => props.selectedOption()}>
             <Container display='flex' justifyContent='center'>
               <Image className="Box_Selection_Image" src={ticket} alt='Dan Abramov' />
             </Container>
@@ -27,7 +27,7 @@ const MainPage = (props: LoadingScreenProps) => {
 
 
         <WrapItem className='MainPage_WrapItem'>
-          <Box borderRadius={'xl'} className="Box_Selection" bg='#f7c635' w='300px' h='250px' p={4} pl={0} pr={0} color='white' onClick={() => props.selectedOption()}>
+          <Box borderRadius={'xl'} className="MainPage_BoxSelection" bg='#f7c635' w='300px' h='250px' p={4} pl={0} pr={0} color='white' onClick={() => props.selectedOption()}>
             <Container display='flex' justifyContent='center'>
               <Image className="Box_Selection_Image" src={calendar} alt='Dan Abramov' />
             </Container>
