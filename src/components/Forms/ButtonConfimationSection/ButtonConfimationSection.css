@@ -1,11 +1,11 @@
-.ButtonSection_ArrowBackIcon{
+.ButtonConfimationSection_ArrowBackIcon{
   background-color: #000000;
   border-radius: 50%;
   padding: 5px;
   color: #ffffff !important;
 }
 
-.ButtonSection_BoxSelection{
+.ButtonConfimationSection_BoxSelection{
   text-align: center;
   display: flex;
   align-items: center;
@@ -13,7 +13,7 @@
   justify-content: center;
 }
 
-.ButtonSection_BoxSelection_BackHome{
+.ButtonConfimationSection_BoxSelection_BackHome{
   text-align: center;
   display: flex;
   align-items: center;
@@ -21,19 +21,19 @@
   justify-content: center;
 }
 
-.ButtonSection_BoxSelection:hover{
+.ButtonConfimationSection_BoxSelection:hover{
   cursor: pointer;
   opacity: 0.8;
   transition: opacity 0.2s;
 }
 
-.ButtonSection_BoxSelection_BackHome{
+.ButtonConfimationSection_BoxSelection_BackHome{
   cursor: pointer;
   opacity: 0.3;
   transition: opacity 0.2s;
 }
 
-.ButtonSection_Text{
+.ButtonConfimationSection_Text{
   font-size: 1.2rem !important;
   @media (max-width: 700px) {
     font-size: 1.3rem !important;

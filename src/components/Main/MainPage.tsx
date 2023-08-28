@@ -5,20 +5,20 @@ import ticket from '../../utils/images/icons8-ticket.png'
 import calendar from '../../utils/images/icons8-calendar.png'
 
 
-interface LoadingScreenProps {
-  selectedOption: () => void;
+interface MainPageProps {
+  selectedOption: (stepperOption: string) => void;
 }
 
-const MainPage = (props: LoadingScreenProps) => {
+const MainPage = (props: MainPageProps) => {
   return (
     <ScaleFade initialScale={0.9} in={true} style={{ width: '100%' }}>
       <Wrap justify='center' spacing='5px' width={'100%'}>
         <WrapItem className='MainPage_WrapItem'>
-          <Box borderRadius={'xl'} className="MainPage_BoxSelection" bg='#3f87bb' w='300px' h='250px' p={4} pl={0} pr={0} color='white' onClick={() => props.selectedOption()}>
+          <Box borderRadius={'xl'} className="MainPage_BoxSelection" bg='#3f87bb' w='280px' h='100%' p={3} color='white' onClick={(e) => props.selectedOption("Next")}>
             <Container display='flex' justifyContent='center'>
               <Image className="Box_Selection_Image" src={ticket} alt='Dan Abramov' />
             </Container>
-            <Container h='120px' display='flex' justifyContent='center' alignItems={'center'}>
+            <Container h='80px' display='flex' justifyContent='center' alignItems={'center'}>
               <Text className='MainPage_Text' fontWeight='500' color='whiteAlpha'>Tap here for Queue Ticket</Text>
             </Container>
 
@@ -27,14 +27,13 @@ const MainPage = (props: LoadingScreenProps) => {
 
 
         <WrapItem className='MainPage_WrapItem'>
-          <Box borderRadius={'xl'} className="MainPage_BoxSelection" bg='#f7c635' w='300px' h='250px' p={4} pl={0} pr={0} color='white' onClick={() => props.selectedOption()}>
+          <Box borderRadius={'xl'} className="MainPage_BoxSelection" bg='#f7c635' w='280px' h='100%' p={3} color='white' onClick={() => props.selectedOption("Next")}>
             <Container display='flex' justifyContent='center'>
               <Image className="Box_Selection_Image" src={calendar} alt='Dan Abramov' />
             </Container>
-            <Container h='120px' display='flex' justifyContent='center' alignItems={'center'}>
+            <Container h='80px' display='flex' justifyContent='center' alignItems={'center'}>
               <Text className='MainPage_Text' fontWeight='500' color='whiteAlpha'>I have an E-Order / Urea Breath Test/ Seminal Analaysis Appointment</Text>
             </Container>
-
           </Box>
         </WrapItem>
 

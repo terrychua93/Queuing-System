@@ -4,21 +4,29 @@ import { Box, Button, Container, Stepper, useSteps } from "@chakra-ui/react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import MobileNumber from "../../components/Forms/MobileNumber/MobileNumber";
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import PassportNumber from "../../components/Forms/PassportNumber/PassportNumber";
-
+import Confirmation from "../../components/Forms/Confirmation/Confirmation";
+import './Layout.css';
+import QueuingPage from "../../components/QueuingPage/QueuingPage";
 
 
 
 const Layout = () => {
 
+  const [mobileNumber, setMobileNumber] = useState('');
+  const [passportNumber, setPassportNumber] = useState('');
+
   const steps = [
     { title: 'First', description: 'Main Page' },
-    { title: 'Second', description: 'Date & Time' },
-    { title: 'Third', description: 'Select Rooms' },
+    { title: 'Second', description: 'Mobile Number' },
+    { title: 'Third', description: 'Mobile Number Confirmation' },
+    { title: 'Fourth', description: 'Passport Number' },
+    { title: 'Fifth', description: 'Passport Number Confirmation' },
+    { title: 'Sixth', description: 'Queue Number' },
   ]
 
-  const { goToNext, goToPrevious, activeStep } = useSteps({
+  const { goToNext, goToPrevious, setActiveStep, activeStep } = useSteps({
     index: 1,
     count: steps.length,
   })
@@ -26,13 +34,17 @@ const Layout = () => {
 
   const StepperReducer = (type: string) => {
     switch (type) {
-      case 'next':
+      case 'Home':
+        setActiveStep(1);
+        break;
+      case 'Next':
         goToNext();
         break;
-      case 'prev':
+      case 'Prev':
         goToPrevious();
         break;
-      case 'skip':
+      case 'Skip':
+        setActiveStep(activeStep + 2);
         break;
       default:
         throw new Error();
@@ -40,34 +52,27 @@ const Layout = () => {
   }
 
 
-
   return (
-    <Container maxW='1000px'>
+    <Container className="Layout_Container" maxW='1000px'>
       <Header />
-      <Stepper size='lg' colorScheme='red' index={activeStep}>
-        {activeStep === 1 ? (<MainPage selectedOption={() => StepperReducer('next')} />) :
-          activeStep === 2 ? (<MobileNumber selectedOption={() => StepperReducer('next')} />) :
-            (<PassportNumber selectedOption={() => StepperReducer('next')} />)}
-      </Stepper>
+      <Box maxH={'100%'} minH={'290px'} display={'flex'} justifyContent={'center'}>
+        <Stepper size='lg' colorScheme='red' index={activeStep}>
+          {activeStep === 1 ? (<MainPage selectedOption={(e: string) => StepperReducer(e)} />) :
+            activeStep === 2 ? (<MobileNumber defaultValue={mobileNumber} inputHandler={(e) => setMobileNumber(e)} selectedOption={(e: string) => StepperReducer(e)} />) :
+              activeStep === 3 ? (<Confirmation confirmationType={'mobile'} displayValue={mobileNumber} selectedOption={(e: string) => StepperReducer(e)} />) :
+                activeStep === 4 ? (<PassportNumber defaultValue={passportNumber} inputHandler={(e) => setPassportNumber(e)} selectedOption={(e: string) => StepperReducer(e)} />) :
+                  activeStep === 5 ? (<Confirmation confirmationType={'passport'} displayValue={passportNumber} selectedOption={(e: string) => StepperReducer(e)} />) :
+                    activeStep === 6 ? (<QueuingPage mobileNumber={mobileNumber} passportNumber={passportNumber} />) :
+                      (<QueuingPage mobileNumber={mobileNumber} passportNumber={passportNumber} />)}
+        </Stepper>
 
-      <p >{activeStep}</p>
+      </Box>
+
+
+      {/* <p >{activeStep}</p> */}
 
       <Footer />
     </Container>
-    //   <Button
-    //   onClick={() => {
-    //     goToNext();
-    //   }}
-    // >
-    //   Forward
-    // </Button>
-    // <Button
-    //   onClick={() => {
-    //     goToPrevious();
-    //   }}
-    // >
-    //   Previous
-    // </Button>
   )
 };
 

@@ -1,23 +1,37 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './PassportNumber.css';
-import { Box, Container, Flex, Text, Image, Wrap, WrapItem, ScaleFade, InputGroup, Input, InputLeftAddon } from '@chakra-ui/react'
-import ticket from '../../utils/images/icons8-ticket.png'
-import calendar from '../../utils/images/icons8-calendar.png'
+import { Container, Text, ScaleFade, InputGroup, Input } from '@chakra-ui/react'
 import ButtonSection from '../ButtonSection/ButtonSection';
 
 
 interface PassportNumberProps {
-  selectedOption: () => void;
+  defaultValue: string;
+  inputHandler: (inputValue: string) => void;
+  selectedOption: (stepperOption: string) => void;
 }
 
 const PassportNumber = (props: PassportNumberProps) => {
+  const [isDisabled, setIsDisabled] = useState(false);
+  const inputElement = useRef<HTMLInputElement>(null);
+  const getPassportNumber = (e: any) => {
+    setIsDisabled(e.target.value.length > 0 ? false : true);
+    props.inputHandler(e.target.value);
+  }
+
+  useEffect(() => {
+    setIsDisabled(inputElement?.current?.value === null || inputElement?.current?.value === '')
+  }, []);
+
   return (
-    <Container mt='10' mb='5' className="Header_Container" maxW='600px' centerContent>
+    <Container mt='2' mb='5' className="Header_Container" maxW='510px'>
+      <Text fontWeight={'bolder'} mb='8px' textAlign={'start'}>Please input your NRIC / Passport number</Text>
       <ScaleFade initialScale={0.9} in={true} style={{ width: '100%' }}>
         <InputGroup mb={5}>
-          <Input type='text' placeholder='passport number' />
+          <Input ref={inputElement} type='text' value={props.defaultValue} placeholder='NRIC / Passport number' onChange={getPassportNumber} onInput={(event: React.ChangeEvent<HTMLInputElement>) => {
+            event.target.value = event.target.value.replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
+          }} />
         </InputGroup>
-        <ButtonSection selectedOption={() => props.selectedOption()} />
+        <ButtonSection isDisabled={isDisabled} selectedOption={(e: string) => props.selectedOption(e)} />
 
       </ScaleFade>
     </Container>
