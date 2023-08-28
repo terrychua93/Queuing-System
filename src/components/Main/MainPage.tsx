@@ -12,9 +12,9 @@ interface MainPageProps {
 const MainPage = (props: MainPageProps) => {
   return (
     <ScaleFade initialScale={0.9} in={true} style={{ width: '100%' }}>
-      <Wrap justify='center' spacing='5px' width={'100%'}>
+      <Wrap justify='center' spacing='5px' width={'100%'} flexFlow={'column'}>
         <WrapItem className='MainPage_WrapItem'>
-          <Box borderRadius={'xl'} className="MainPage_BoxSelection" bg='#3f87bb' w='280px' h='100%' p={3} color='white' onClick={(e) => props.selectedOption("Next")}>
+          <Box borderRadius={'xl'} className="MainPage_BoxSelection" bg='#3f87bb' w='100%' h='100%' p={3} color='white' onClick={(e) => props.selectedOption("Next")}>
             <Container display='flex' justifyContent='center'>
               <Image className="Box_Selection_Image" src={ticket} alt='Dan Abramov' />
             </Container>
@@ -27,12 +27,12 @@ const MainPage = (props: MainPageProps) => {
 
 
         <WrapItem className='MainPage_WrapItem'>
-          <Box borderRadius={'xl'} className="MainPage_BoxSelection" bg='#f7c635' w='280px' h='100%' p={3} color='white' onClick={() => props.selectedOption("Next")}>
+          <Box borderRadius={'xl'} className="MainPage_BoxSelection" bg='#f7c635' w='100%' h='100%' p={3} color='white' onClick={() => props.selectedOption("Next")}>
             <Container display='flex' justifyContent='center'>
               <Image className="Box_Selection_Image" src={calendar} alt='Dan Abramov' />
             </Container>
             <Container h='80px' display='flex' justifyContent='center' alignItems={'center'}>
-              <Text className='MainPage_Text' fontWeight='500' color='whiteAlpha'>I have an E-Order / Urea Breath Test/ Seminal Analaysis Appointment</Text>
+              <Text className='MainPage_Text' fontWeight='500' color='whiteAlpha'>I have an Endoscopy Procedure Appointment</Text>
             </Container>
           </Box>
         </WrapItem>

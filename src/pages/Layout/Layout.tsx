@@ -71,7 +71,7 @@ const Layout = () => {
 
       {/* <p >{activeStep}</p> */}
 
-      <Footer />
+      {/* <Footer /> */}
     </Container>
   )
 };

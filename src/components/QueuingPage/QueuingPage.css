@@ -1,6 +1,15 @@
 .QueuingPage_BoxSelection{
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: 30px !important;
+  width: fit-content;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  @media (max-width: 700px) {
+    width: 100% !important;
+  }
 }
 
 .QueuingPage_Container{
@@ -8,3 +17,26 @@
   align-items: center;
   text-align: center;
 }
+
+
+.QueuingPage_BoxSelection:hover{
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.QueuingPage_WrapItem{
+  @media (max-width: 700px) {
+    width: 100% !important;
+    font-size: 1.5rem !important;
+  }
+}
+
+.QueuingPage_Text{
+  font-size: 1.2rem !important;
+  @media (max-width: 700px) {
+    font-size: 1rem !important;
+  }
+}
+
+

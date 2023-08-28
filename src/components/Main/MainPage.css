@@ -29,4 +29,8 @@
   }
 }
 
+.chakra-wrap__list{
+  flex-flow: column;
+}
+
 

@@ -37,9 +37,9 @@ const QueuingPage = (props: QueuingPageProps) => {
   return (
     <Container mt='2' mb='5' className="QueuingPage_Container" maxW='510px'>
       <ScaleFade initialScale={0.9} in={true} style={{ width: '100%' }}>
-        <Text mb='10' color={'gray'} fontWeight={'bolder'}>Issued on {moment().format('DD-MM-YYYY h:mm a')}</Text>
+        <Text fontSize={'1.2rem'} my='3' color={'gray'} fontWeight={'bolder'}>Issued on {moment().format('DD-MM-YYYY h:mm a')}</Text>
 
-        <Wrap justify='center' spacing='5px' width={'100%'}>
+        <Wrap justify='center' width={'100%'}>
           <WrapItem className='QueuingPage_WrapItem'>
             <Box borderRadius={'xl'} className="QueuingPage_BoxSelection" bg='#ffffff' w='440px' h='100%' p={3}>
               <Text fontSize={'1.5rem'} color={'black'} fontWeight={'bolder'}>Your Queue Number</Text>

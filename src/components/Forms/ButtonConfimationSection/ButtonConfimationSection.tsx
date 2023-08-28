@@ -11,7 +11,7 @@ const ButtonConfirmationSection = (props: ButtonConfirmationSectionProps) => {
   return (
     <>
       <ButtonGroup width={'100%'} justifyContent='center'>
-        <Button borderRadius={0} w='50%' h='100%' pt='1rem' pb='1rem' bgColor={'#778Ba5'} colorScheme='blackAlpha' onClick={() => props.selectedOption("Prev")}>
+        <Button borderRadius={'20px'} w='50%' h='100%' pt='1rem' pb='1rem' bgColor={'#778Ba5'} colorScheme='blackAlpha' onClick={() => props.selectedOption("Prev")}>
           <Box className="ButtonConfimationSection_BoxSelection" color='white' >
             <Container display='flex' justifyContent='center' mb={1}>
               <EditIcon className="ButtonConfimationSection_Icon" fontSize={'1.7rem'} />
@@ -21,7 +21,7 @@ const ButtonConfirmationSection = (props: ButtonConfirmationSectionProps) => {
             </Container>
           </Box>
         </Button>
-        <Button borderRadius={0} w='50%' h='100%' pt='1rem' pb='1rem' bgColor={'#008080'} colorScheme='blackAlpha' onClick={() => props.selectedOption("Next")}>
+        <Button borderRadius={'20px'} w='50%' h='100%' pt='1rem' pb='1rem' bgColor={'#008080'} colorScheme='blackAlpha' onClick={() => props.selectedOption("Next")}>
           <Box className="ButtonConfimationSection_BoxSelection" color='white' >
             <Container display='flex' justifyContent='center'>
               <CheckIcon className="ButtonConfimationSection_Icon" fontSize={'2rem'} />
